@@ -37,6 +37,7 @@ export const useClientSetting = (props: UseClientSettingProps): ClientSettingSta
 
     const setServerUrl = useMemo(() => {
         return (url: string) => {
+            console.log("+++++++++++++setServerUrl++++++++++++++++++++++++++", url);
             if (!props.voiceChangerClient) return;
             props.voiceChangerClient.setServerUrl(url, true);
         };

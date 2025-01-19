@@ -13,6 +13,7 @@ export class ServerRestClient {
     }
 
     getSettings = async () => {
+        console.log("++++++SERVER URL", this.serverUrl);
         const url = this.serverUrl + "/info";
         const info = await new Promise<ServerInfo>((resolve) => {
             const request = new Request(url, {

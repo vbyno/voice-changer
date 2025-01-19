@@ -19,7 +19,7 @@ export type WorkletNodeSettingState = {
 export const useWorkletNodeSetting = (props: UseWorkletNodeSettingProps): WorkletNodeSettingState => {
     // 更新比較用
     const [workletNodeSetting, _setWorkletNodeSetting] = useState<WorkletNodeSetting>(props.workletNodeSetting);
-
+    console.log("+++++++++++++useWorkletNodeSetting++++++++++++++++++++++++++", props.workletNodeSetting);
     //////////////
     // 設定
     /////////////

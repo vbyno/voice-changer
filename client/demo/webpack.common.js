@@ -10,6 +10,17 @@ module.exports = {
         fallback: {
             buffer: require.resolve("buffer/"),
         },
+        modules: [
+            path.resolve(__dirname, 'node_modules'),
+            path.resolve(__dirname, '../lib/node_modules'),
+        ],
+        alias: {
+            'react': path.resolve(__dirname, 'node_modules/react'),
+            'raw-loader': path.resolve(__dirname, 'node_modules/raw-loader'),
+            'amazon-chime-sdk-js': path.resolve(__dirname, 'node_modules/amazon-chime-sdk-js'),
+            'socket.io-client': path.resolve(__dirname, 'node_modules/socket.io-client'),
+            'localforage': path.resolve(__dirname, 'node_modules/localforage'),
+        },
     },
     module: {
         rules: [
@@ -20,7 +31,13 @@ module.exports = {
                         loader: "babel-loader",
                         options: {
                             presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
-                            plugins: ["@babel/plugin-transform-runtime"],
+                            plugins: [
+                                ["@babel/plugin-transform-runtime", {
+                                    "regenerator": true,
+                                    "helpers": true,
+                                    "corejs": false
+                                }]
+                            ],
                         },
                     },
                 ],

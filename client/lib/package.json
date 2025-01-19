@@ -26,6 +26,7 @@
     "author": "wataru.okada@flect.co.jp",
     "license": "ISC",
     "devDependencies": {
+        "@babel/plugin-transform-runtime": "^7.26.9",
         "@types/audioworklet": "^0.0.54",
         "@types/jest": "^29.5.12",
         "@types/node": "^20.11.21",

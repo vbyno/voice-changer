@@ -43,14 +43,11 @@ if [ "${USE_GPU}" = "on" ]; then
 else
     echo "VC Client start...(cpu)"
     docker run -it --rm --shm-size=1024M \
-    -e EX_IP="`hostname -I`" \
     -e EX_PORT=${EX_PORT} \
-    -e LOCAL_UID=$(id -u $USER) \
-    -e LOCAL_GID=$(id -g $USER) \
     -v `pwd`/docker_folder/model_dir:/voice-changer/server/model_dir \
     -v `pwd`/docker_folder/pretrain:/voice-changer/server/pretrain \
     -p ${EX_PORT}:18888 \
-    $DOCKER_IMAGE -p 18888 --https true \
+    $DOCKER_IMAGE  --https true \
         --content_vec_500 pretrain/checkpoint_best_legacy_500.pt  \
         --content_vec_500_onnx pretrain/content_vec_500.onnx \
         --content_vec_500_onnx_on true \
@@ -64,5 +61,3 @@ else
         --model_dir model_dir \
         --samples samples.json
 fi
-
-

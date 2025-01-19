@@ -40,7 +40,11 @@ export class VoiceChangerClient {
 
     constructor(ctx: AudioContext, vfEnable: boolean, voiceChangerWorkletListener: VoiceChangerWorkletListener) {
         this.sem.enqueue(0);
-        this.configurator = new ServerConfigurator("");
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const serverUrl = urlParams.get('serverUrl') || '';
+        this.configurator = new ServerConfigurator(serverUrl);
+        console.log("+++++++++++++++++++++++serverUrl", serverUrl);
         this.ctx = ctx;
         this.vfEnable = vfEnable;
         this.promiseForInitialize = new Promise<void>(async (resolve) => {

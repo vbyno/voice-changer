@@ -84,7 +84,19 @@ export const useClient = (props: UseClientProps): ClientState => {
 
     // (1-2) 各種設定I/F
     const voiceChangerClientSetting = useClientSetting({ voiceChangerClient, voiceChangerClientSetting: setting.voiceChangerClientSetting });
-    const workletNodeSetting = useWorkletNodeSetting({ voiceChangerClient: voiceChangerClient, workletNodeSetting: setting.workletNodeSetting });
+
+    // Take serverUrl from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const serverUrl = urlParams.get('serverUrl') || '';
+    console.log('serverUrl', serverUrl);
+    const workletNodeSetting = useWorkletNodeSetting(
+        {
+            voiceChangerClient: voiceChangerClient,
+            workletNodeSetting: {
+                ...setting.workletNodeSetting,
+                serverUrl: serverUrl
+            }
+        });
     useWorkletSetting({ voiceChangerClient, workletSetting: setting.workletSetting });
     const serverSetting = useServerSetting({ voiceChangerClient });
     const indexedDBState = useIndexedDB({ clientType: null });

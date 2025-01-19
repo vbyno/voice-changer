@@ -30,6 +30,7 @@ export const useAppState = (): AppStateValue => {
 export const AppStateProvider = ({ children }: Props) => {
     const appRoot = useAppRoot();
     const webEdition = appRoot.appGuiSettingState.edition.indexOf("web") >= 0;
+    console.log("++++++AppStateProvider");
     const clientState = useVCClient({ audioContext: appRoot.audioContextState.audioContext });
     const messageBuilderState = useMessageBuilder();
     const webInfoState = useWebInfo({ clientState: clientState.clientState, webEdition: webEdition });
