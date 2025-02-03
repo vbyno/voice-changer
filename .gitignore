@@ -30,7 +30,7 @@ server/model_so-vits-svc-40_tsukuyomi/
 server/model_so-vits-svc-40_kikotokurage
 model_DDSP-SVC/
 server/model_sovits
-server/test 
+server/test
 
 server/memo.md
 
@@ -75,3 +75,5 @@ beatrice_internal_api.cp310-win_amd64.pyd
 108_average_110b_10.bin
 
 server/model_dir_static/Beatrice-JVS
+
+.env

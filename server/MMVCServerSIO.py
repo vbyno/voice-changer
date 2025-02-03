@@ -250,19 +250,20 @@ if __name__ == "__main__":
             logger.error(f"[Voice Changer] Web Server(https) Launch Exception, {e}")
 
     else:
-        p = mp.Process(name="p", target=localServer, args=(args.logLevel,))
-        p.start()
-        try:
-            if sys.platform.startswith("win"):
-                process = subprocess.Popen([NATIVE_CLIENT_FILE_WIN, "--disable-gpu", "-u", f"http://localhost:{PORT}/"])
-                return_code = process.wait()
-                logger.info("client closed.")
-                p.terminate()
-            elif sys.platform.startswith("darwin"):
-                process = subprocess.Popen([NATIVE_CLIENT_FILE_MAC, "--disable-gpu", "-u", f"http://localhost:{PORT}/"])
-                return_code = process.wait()
-                logger.info("client closed.")
-                p.terminate()
+        localServer(args.logLevel)
+        # p = mp.Process(name="p", target=localServer, args=(args.logLevel,))
+        # p.start()
+        # try:
+        #     if sys.platform.startswith("win"):
+        #         process = subprocess.Popen([NATIVE_CLIENT_FILE_WIN, "--disable-gpu", "-u", f"http://localhost:{PORT}/"])
+        #         return_code = process.wait()
+        #         logger.info("client closed.")
+        #         p.terminate()
+        #     elif sys.platform.startswith("darwin"):
+        #         process = subprocess.Popen([NATIVE_CLIENT_FILE_MAC, "--disable-gpu", "-u", f"http://localhost:{PORT}/"])
+        #         return_code = process.wait()
+        #         logger.info("client closed.")
+        #         p.terminate()
 
-        except Exception as e:
-            logger.error(f"[Voice Changer] Client Launch Exception, {e}")
+        # except Exception as e:
+        #     logger.error(f"[Voice Changer] Client Launch Exception, {e}")

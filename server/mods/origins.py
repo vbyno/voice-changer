@@ -1,11 +1,15 @@
 from typing import Optional, Sequence
 from urllib.parse import urlparse
+import os
 
 ENFORCE_URL_ORIGIN_FORMAT = "Input origins must be well-formed URLs, i.e. https://google.com or https://www.google.com."
 SCHEMAS = ('http', 'https')
-LOCAL_ORIGINS = ('127.0.0.1', 'localhost')
+CORS_HOST = os.getenv('CORS_HOST', 'localhost')
+CORS_PORT = int(os.getenv('CORS_PORT', '8081'))
+LOCAL_ORIGINS = ('127.0.0.1', 'localhost', CORS_HOST)
 
 def compute_local_origins(port: Optional[int] = None) -> list[str]:
+    port = CORS_PORT
     local_origins = [f'{schema}://{origin}' for schema in SCHEMAS for origin in LOCAL_ORIGINS]
     if port is not None:
         local_origins = [f'{origin}:{port}' for origin in local_origins]

@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+    command: bash run.sh
+    volumes:
+      - ./:/voice-changer/
+      - ./poetry/:/opt/poetry/
+    env_file: .env
+    ports:
+      - 18888:18888
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
