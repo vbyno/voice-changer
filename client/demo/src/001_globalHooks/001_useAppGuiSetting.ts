@@ -51,7 +51,7 @@ export const useAppGuiSetting = (): AppGuiSettingStateAndMethod => {
 
     useEffect(() => {
         const getVersionInfo = async () => {
-            const res = await fetch(`/assets/gui_settings/version.txt`, {
+            const res = await fetch(`/voice_changer/assets/gui_settings/version.txt`, {
                 method: "GET",
             })
             const version = await res.text()
@@ -62,7 +62,7 @@ export const useAppGuiSetting = (): AppGuiSettingStateAndMethod => {
 
     useEffect(() => {
         const getVersionInfo = async () => {
-            const res = await fetch(`/assets/gui_settings/edition.txt`, {
+            const res = await fetch(`/voice_changer/assets/gui_settings/edition.txt`, {
                 method: "GET",
             })
             const edition = await res.text()
@@ -80,4 +80,3 @@ export const useAppGuiSetting = (): AppGuiSettingStateAndMethod => {
         clearAppGuiSetting,
     }
 }
-
