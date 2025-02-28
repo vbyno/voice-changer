@@ -219,6 +219,7 @@ export class VoiceChangerClient {
     //////////////////////////////
     setServerUrl = (serverUrl: string, openTab: boolean = false) => {
         const url = validateUrl(serverUrl);
+        console.log("+++++++++++++++++++++++setServerUrl--------", url);
         const pageUrl = `${location.protocol}//${location.host}`;
 
         if (url != pageUrl && url.length != 0 && location.protocol == "https:" && this.sslCertified.includes(url) == false) {

@@ -11,14 +11,14 @@ module.exports = merge(common, {
         proxy: [
             {
                 context: ['/ws'],
-                target: 'ws://192.168.1.33:18888/ws',
+                target: 'ws://ev3-ve20-23b24.com/ws',
                 ws: true,
                 changeOrigin: true
             },
             {
                 context: ['/'],
                 // target: 'http://192.168.88.18:18888',
-                target: 'http://44.244.56.154:18888',
+                target: 'https://ev3-ve20-23b24.com',
                 changeOrigin: true
             }
         ],
@@ -29,7 +29,7 @@ module.exports = merge(common, {
             },
         },
         host: "0.0.0.0",
-        port: 8090,
+        port: 8080,
         // https: true,
     },
 })
