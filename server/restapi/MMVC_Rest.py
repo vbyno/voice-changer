@@ -6,9 +6,11 @@ from fastapi import FastAPI, Request, Response, HTTPException
 from fastapi.routing import APIRoute
 from fastapi.staticfiles import StaticFiles
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Callable, Optional, Sequence, Literal
 from mods.log_control import VoiceChangaerLogger
 from voice_changer.VoiceChangerManager import VoiceChangerManager
+from mods.origins import compute_local_origins, normalize_origins
 
 from restapi.MMVC_Rest_Hello import MMVC_Rest_Hello
 from restapi.MMVC_Rest_VoiceChanger import MMVC_Rest_VoiceChanger
@@ -54,6 +56,14 @@ class MMVC_Rest:
                 TrustedOriginMiddleware,
                 allowed_origins=allowedOrigins,
                 port=port
+            )
+
+            app_fastapi.add_middleware(
+                CORSMiddleware,
+                allow_origins=allowedOrigins,
+                allow_credentials=True,
+                allow_methods=["*"],
+                allow_headers=["*"],
             )
 
             app_fastapi.mount(
