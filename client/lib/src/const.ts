@@ -518,6 +518,8 @@ export type ClientSetting = {
     workletNodeSetting: WorkletNodeSetting;
     voiceChangerClientSetting: VoiceChangerClientSetting;
 };
+const urlParams = new URLSearchParams(window.location.search);
+const serverUrl = urlParams.get('serverUrl') || '';
 export const DefaultClientSettng: ClientSetting = {
     workletSetting: {
         // numTrancateTreshold: 512 * 2,
@@ -526,7 +528,7 @@ export const DefaultClientSettng: ClientSetting = {
         volTrancateLength: 32,
     },
     workletNodeSetting: {
-        serverUrl: "",
+        serverUrl: serverUrl,
         protocol: "sio",
         sendingSampleRate: 48000,
         inputChunkNum: 192,

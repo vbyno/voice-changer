@@ -98,6 +98,7 @@ export class VoiceChangerWorkletNode extends AudioWorkletNode {
       this.socket.close();
     }
     if (this.setting.protocol === "sio") {
+      console.log("+++++++++++++++++++++++createSocketIO++++++++++++++++++++++++++", this.setting.serverUrl);
       this.socket = io(this.setting.serverUrl + "/test");
       this.socket.on("connect_error", (err) => {
         this.listener.notifyException(
